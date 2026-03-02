@@ -23,6 +23,60 @@
         }
         .tagline { color: #8892b0; font-size: 16px; margin-top: 10px; }
         
+        /* API Key 设置面板 */
+        .api-setup {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .api-setup h3 {
+            color: #ffc107;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .api-input-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .api-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .api-input::placeholder {
+            color: #666;
+        }
+        .api-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ffc107, #ff9500);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .api-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,193,7,0.3);
+        }
+        .api-status {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .api-status.success { color: #00ff88; }
+        .api-status.error { color: #ff4757; }
+        
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -47,7 +101,6 @@
             gap: 10px;
         }
         
-        /* 输入方式选择 */
         .input-tabs {
             display: flex;
             gap: 10px;
@@ -71,7 +124,6 @@
             background: rgba(255,255,255,0.1);
         }
         
-        /* 视频/图片区域 */
         .media-container {
             width: 100%;
             aspect-ratio: 4/3;
@@ -101,7 +153,6 @@
             margin-bottom: 10px;
         }
         
-        /* 文件上传 */
         .upload-area {
             position: absolute;
             top: 0;
@@ -123,7 +174,6 @@
         }
         #fileInput { display: none; }
         
-        /* 拍照按钮 */
         .capture-btn {
             position: absolute;
             bottom: 20px;
@@ -140,11 +190,7 @@
         .capture-btn:hover {
             transform: translateX(-50%) scale(1.1);
         }
-        .capture-btn:active {
-            transform: translateX(-50%) scale(0.95);
-        }
         
-        /* 分析按钮 */
         .analyze-btn {
             width: 100%;
             padding: 16px;
@@ -170,7 +216,6 @@
             cursor: not-allowed;
         }
         
-        /* 加载动画 */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -224,7 +269,6 @@
             transition: width 0.3s;
         }
         
-        /* 结果显示 */
         .result-panel {
             margin-top: 20px;
             padding: 20px;
@@ -262,7 +306,6 @@
             color: #00d4ff;
         }
         
-        /* 置信度指示器 */
         .confidence-meter {
             margin-top: 15px;
             padding: 15px;
@@ -290,7 +333,6 @@
         .confidence-medium { background: linear-gradient(90deg, #ffc107, #ff9500); }
         .confidence-high { background: linear-gradient(90deg, #ff4757, #ff6348); }
         
-        /* 历史记录 */
         .history-list {
             margin-top: 15px;
             max-height: 300px;
@@ -331,7 +373,6 @@
         .history-risk-medium { color: #ffc107; }
         .history-risk-high { color: #ff4757; }
         
-        /* 技术说明 */
         .tech-note {
             margin-top: 20px;
             padding: 15px;
@@ -376,27 +417,36 @@
     <div class="container">
         <header>
             <div class="logo">镜守 MirrorGuard</div>
-            <div class="tagline">基于百川大模型的 AI 脑梗风险评估系统</div>
+            <div class="tagline">基于 Claude Opus 的 AI 脑梗风险评估系统</div>
         </header>
+        
+        <!-- API Key 设置 -->
+        <div class="api-setup" id="apiSetup">
+            <h3>🔑 第一步：配置 Claude API Key</h3>
+            <div class="api-input-group">
+                <input type="password" class="api-input" id="apiKeyInput" placeholder="请输入你的 Claude API Key (sk-ant-...)">
+                <button class="api-btn" onclick="saveApiKey()">💾 保存并使用</button>
+            </div>
+            <div class="api-status" id="apiStatus"></div>
+            <div style="margin-top: 10px; font-size: 13px; color: #8892b0;">
+                💡 没有 API Key？访问 <a href="https://console.anthropic.com" target="_blank" style="color: #00d4ff;">console.anthropic.com</a> 获取
+            </div>
+        </div>
         
         <div class="main-grid">
             <!-- 左侧：图像输入 -->
             <div class="panel">
                 <h2>📷 图像采集</h2>
                 
-                <!-- 输入方式切换 -->
                 <div class="input-tabs">
                     <button class="tab-btn active" onclick="switchTab('camera')">📹 摄像头</button>
                     <button class="tab-btn" onclick="switchTab('upload')">📁 上传照片</button>
                 </div>
                 
-                <!-- 媒体显示区 -->
                 <div class="media-container" id="mediaContainer">
-                    <!-- 摄像头模式 -->
                     <video id="videoElement" autoplay playsinline></video>
                     <button class="capture-btn" id="captureBtn" onclick="capturePhoto()" style="display: none;"></button>
                     
-                    <!-- 上传模式 -->
                     <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()" style="display: none;">
                         <div class="placeholder">
                             <div class="placeholder-icon">📤</div>
@@ -406,19 +456,17 @@
                     </div>
                     <input type="file" id="fileInput" accept="image/*" onchange="handleFileUpload(event)">
                     
-                    <!-- 预览图 -->
                     <img id="previewImage" alt="预览">
                     
-                    <!-- 默认提示 -->
                     <div class="placeholder" id="placeholder">
                         <div class="placeholder-icon">👤</div>
-                        <div>请选择摄像头或上传照片</div>
+                        <div>请先配置 API Key</div>
                     </div>
                 </div>
                 
                 <div class="status-bar">
-                    <span id="inputStatus">等待输入...</span>
-                    <span class="model-badge">🤖 Baichuan-Omni-1.5</span>
+                    <span id="inputStatus">等待配置...</span>
+                    <span class="model-badge">🤖 Claude Opus 4.6</span>
                 </div>
                 
                 <button class="analyze-btn" id="analyzeBtn" onclick="startAnalysis()" disabled>
@@ -431,14 +479,12 @@
             <div class="panel">
                 <h2>📊 评估结果</h2>
                 
-                <!-- 初始状态 -->
                 <div id="initialState" style="text-align: center; padding: 40px; color: #8892b0;">
                     <div style="font-size: 48px; margin-bottom: 15px;">🩺</div>
-                    <div>请先拍摄或上传面部照片</div>
+                    <div>请先配置 API Key 并上传照片</div>
                     <div style="font-size: 14px; margin-top: 10px;">AI 将分析面部对称性、表情特征等指标</div>
                 </div>
                 
-                <!-- 分析结果 -->
                 <div id="resultPanel" class="result-panel">
                     <div class="result-title" id="resultTitle"></div>
                     <div class="result-content" id="resultContent"></div>
@@ -453,7 +499,6 @@
                     </div>
                 </div>
                 
-                <!-- 历史记录 -->
                 <div style="margin-top: 25px;">
                     <h3 style="color: #00d4ff; font-size: 16px; margin-bottom: 12px;">📋 检测历史</h3>
                     <div class="history-list" id="historyList">
@@ -466,14 +511,13 @@
                     <ul>
                         <li>本系统仅作为<strong>健康提醒工具</strong>，不能替代专业医疗诊断</li>
                         <li>分析结果仅供参考，如有不适请立即就医</li>
-                        <li>所有图像数据仅用于实时分析，不会存储到服务器</li>
+                        <li>API Key 仅存储在浏览器本地，不会上传到服务器</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- 加载遮罩 -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
         <div class="loading-text">AI 正在分析中...</div>
@@ -485,15 +529,51 @@
 
     <script>
         // ==================== 配置 ====================
-        const BAICHUAN_API_KEY = 'sk-9c809c41c5c932a4320b7710a07446aa';
-        const BAICHUAN_API_URL = 'https://api.baichuan-ai.com/v1/chat/completions';
-        const MODEL_NAME = 'Baichuan-Omni-1.5';
+        const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
+        const MODEL_NAME = 'claude-opus-4-6';
         
         // ==================== 状态管理 ====================
-        let currentMode = 'camera'; // 'camera' | 'upload'
+        let currentMode = 'camera';
         let capturedImage = null;
         let stream = null;
         let analysisHistory = [];
+        let apiKey = localStorage.getItem('claude_api_key') || '';
+        
+        // ==================== API Key 管理 ====================
+        function saveApiKey() {
+            const input = document.getElementById('apiKeyInput');
+            const key = input.value.trim();
+            const status = document.getElementById('apiStatus');
+            
+            if (!key || !key.startsWith('sk-ant-')) {
+                status.textContent = '❌ 请输入有效的 Claude API Key（以 sk-ant- 开头）';
+                status.className = 'api-status error';
+                return;
+            }
+            
+            apiKey = key;
+            localStorage.setItem('claude_api_key', apiKey);
+            
+            status.textContent = '✅ API Key 已保存到浏览器本地存储';
+            status.className = 'api-status success';
+            
+            document.getElementById('placeholder').innerHTML = `
+                <div class="placeholder-icon">👤</div>
+                <div>请选择摄像头或上传照片</div>
+            `;
+            document.getElementById('inputStatus').textContent = '✅ 已就绪，请选择输入方式';
+            
+            // 启动摄像头
+            setTimeout(() => startCamera(), 500);
+        }
+        
+        // 页面加载时检查已有 key
+        window.onload = () => {
+            if (apiKey) {
+                document.getElementById('apiKeyInput').value = apiKey;
+                saveApiKey();
+            }
+        };
         
         // ==================== 界面切换 ====================
         function switchTab(mode) {
@@ -507,7 +587,6 @@
             const placeholder = document.getElementById('placeholder');
             const preview = document.getElementById('previewImage');
             
-            // 重置状态
             capturedImage = null;
             updateAnalyzeButton();
             
@@ -517,7 +596,7 @@
                 captureBtn.style.display = 'block';
                 placeholder.style.display = 'none';
                 preview.classList.remove('show');
-                startCamera();
+                if (apiKey) startCamera();
             } else {
                 stopCamera();
                 video.style.display = 'none';
@@ -530,13 +609,14 @@
         
         // ==================== 摄像头功能 ====================
         async function startCamera() {
+            if (!apiKey) {
+                document.getElementById('inputStatus').textContent = '⚠️ 请先配置 API Key';
+                return;
+            }
+            
             try {
                 stream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { 
-                        facingMode: 'user',
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    } 
+                    video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 }}
                 });
                 const video = document.getElementById('videoElement');
                 video.srcObject = stream;
@@ -570,9 +650,13 @@
         
         // ==================== 文件上传 ====================
         function handleFileUpload(event) {
+            if (!apiKey) {
+                alert('请先配置 API Key');
+                return;
+            }
+            
             const file = event.target.files[0];
             if (!file) return;
-            
             if (!file.type.startsWith('image/')) {
                 alert('请选择图片文件');
                 return;
@@ -608,27 +692,25 @@
         
         function updateAnalyzeButton() {
             const btn = document.getElementById('analyzeBtn');
-            btn.disabled = !capturedImage;
+            btn.disabled = !capturedImage || !apiKey;
         }
         
         // ==================== AI 分析 ====================
         async function startAnalysis() {
-            if (!capturedImage) return;
+            if (!capturedImage || !apiKey) return;
             
             showLoading();
             
             try {
-                // 模拟进度更新（因为实际API调用可能较慢）
                 updateLoadingProgress(10, '正在预处理图像...');
                 await sleep(500);
                 
                 updateLoadingProgress(30, '正在提取面部特征...');
                 await sleep(800);
                 
-                updateLoadingProgress(60, 'AI 模型分析中...');
+                updateLoadingProgress(60, 'Claude AI 分析中...');
                 
-                // 调用百川 API
-                const result = await callBaichuanAPI(capturedImage);
+                const result = await callClaudeAPI(capturedImage);
                 
                 updateLoadingProgress(90, '生成评估报告...');
                 await sleep(300);
@@ -644,44 +726,44 @@
             }
         }
         
-        async function callBaichuanAPI(imageBase64) {
-            // 移除 base64 前缀
+        async function callClaudeAPI(imageBase64) {
             const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, '');
             
             const requestBody = {
                 model: MODEL_NAME,
-                messages: [
-                    {
-                        role: 'user',
-                        content: [
-                            {
-                                type: 'text',
-                                text: '请分析这张面部照片，评估是否存在脑梗（脑卒中）风险。重点关注：1）面部左右是否对称；2）嘴角是否有下垂；3）眼睑是否对称；4）表情是否自然。请以JSON格式返回：{"risk_level": "low|medium|high", "confidence": 0-100, "findings": "具体发现", "recommendation": "建议措施"}'
-                            },
-                            {
-                                type: 'image_url',
-                                image_url: {
-                                    url: `data:image/jpeg;base64,${base64Data}`
-                                }
+                max_tokens: 1024,
+                messages: [{
+                    role: 'user',
+                    content: [
+                        {
+                            type: 'text',
+                            text: '请分析这张面部照片，评估是否存在脑梗（脑卒中）风险特征。重点关注：1）面部左右是否对称；2）嘴角是否有下垂；3）眼睑是否对称；4）表情是否自然。请以JSON格式返回：{"risk_level": "low|medium|high", "confidence": 0-100, "findings": "具体发现", "recommendation": "建议措施"}'
+                        },
+                        {
+                            type: 'image',
+                            source: {
+                                type: 'base64',
+                                media_type: 'image/jpeg',
+                                data: base64Data
                             }
-                        ]
-                    }
-                ],
-                temperature: 0.3,
-                max_tokens: 500
+                        }
+                    ]
+                }]
             };
             
-            const response = await fetch(BAICHUAN_API_URL, {
+            const response = await fetch(CLAUDE_API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${BAICHUAN_API_KEY}`
+                    'x-api-key': apiKey,
+                    'anthropic-version': '2023-06-01'
                 },
                 body: JSON.stringify(requestBody)
             });
             
             if (!response.ok) {
-                throw new Error(`API 错误: ${response.status}`);
+                const error = await response.json();
+                throw new Error(`API 错误 ${response.status}: ${error.error?.message || '未知错误'}`);
             }
             
             const data = await response.json();
@@ -689,47 +771,23 @@
         }
         
         function parseAIResponse(apiResponse) {
-            // 解析 AI 返回的内容
             try {
-                const content = apiResponse.choices[0].message.content;
-                // 尝试提取 JSON
+                const content = apiResponse.content[0].text;
                 const jsonMatch = content.match(/\{[\s\S]*\}/);
                 if (jsonMatch) {
                     return JSON.parse(jsonMatch[0]);
                 }
                 
-                // 如果无法解析 JSON，根据关键词判断
                 const lowerContent = content.toLowerCase();
                 if (lowerContent.includes('高风险') || lowerContent.includes('明显不对称')) {
-                    return {
-                        risk_level: 'high',
-                        confidence: 85,
-                        findings: content.substring(0, 200),
-                        recommendation: '建议立即就医进行专业检查'
-                    };
+                    return { risk_level: 'high', confidence: 85, findings: content.substring(0, 200), recommendation: '建议立即就医进行专业检查' };
                 } else if (lowerContent.includes('中度') || lowerContent.includes('轻微')) {
-                    return {
-                        risk_level: 'medium',
-                        confidence: 65,
-                        findings: content.substring(0, 200),
-                        recommendation: '建议密切观察，必要时咨询医生'
-                    };
+                    return { risk_level: 'medium', confidence: 65, findings: content.substring(0, 200), recommendation: '建议密切观察，必要时咨询医生' };
                 } else {
-                    return {
-                        risk_level: 'low',
-                        confidence: 90,
-                        findings: content.substring(0, 200),
-                        recommendation: '目前未见明显异常，继续保持监测'
-                    };
+                    return { risk_level: 'low', confidence: 90, findings: content.substring(0, 200), recommendation: '目前未见明显异常，继续保持监测' };
                 }
             } catch (e) {
-                // 兜底处理
-                return {
-                    risk_level: 'medium',
-                    confidence: 50,
-                    findings: 'AI 分析完成，但结果解析出现异常',
-                    recommendation: '建议人工复核或重新拍摄'
-                };
+                return { risk_level: 'medium', confidence: 50, findings: 'AI 分析完成，但结果解析出现异常', recommendation: '建议人工复核或重新拍摄' };
             }
         }
         
@@ -742,8 +800,6 @@
             
             initial.style.display = 'none';
             panel.classList.add('show');
-            
-            // 根据风险等级设置样式
             panel.className = 'result-panel show result-' + result.risk_level;
             
             const riskConfig = {
@@ -756,17 +812,12 @@
             title.innerHTML = `${config.icon} ${config.text}`;
             title.style.color = config.color;
             
-            content.innerHTML = `
-                <p><strong>AI 发现：</strong>${result.findings}</p>
-                <p style="margin-top: 10px;"><strong>建议措施：</strong>${result.recommendation}</p>
-            `;
+            content.innerHTML = `<p><strong>AI 发现：</strong>${result.findings}</p><p style="margin-top: 10px;"><strong>建议措施：</strong>${result.recommendation}</p>`;
             
-            // 置信度
             document.getElementById('confidenceValue').textContent = result.confidence + '%';
             const fill = document.getElementById('confidenceFill');
             fill.style.width = result.confidence + '%';
-            fill.className = 'confidence-fill confidence-' + 
-                (result.confidence < 50 ? 'low' : result.confidence < 80 ? 'medium' : 'high');
+            fill.className = 'confidence-fill confidence-' + (result.confidence < 50 ? 'low' : result.confidence < 80 ? 'medium' : 'high');
         }
         
         // ==================== 历史记录 ====================
@@ -794,8 +845,7 @@
                     <div class="history-info">
                         <div class="history-time">${item.time}</div>
                         <div class="history-result history-risk-${item.risk}">
-                            ${item.risk === 'low' ? '✅ 低风险' : item.risk === 'medium' ? '⚠️ 中度关注' : '🚨 高风险'}
-                            (${item.confidence}%)
+                            ${item.risk === 'low' ? '✅ 低风险' : item.risk === 'medium' ? '⚠️ 中度关注' : '🚨 高风险'} (${item.confidence}%)
                         </div>
                     </div>
                 </div>
@@ -826,12 +876,6 @@
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-        
-        // ==================== 初始化 ====================
-        window.onload = () => {
-            // 默认启动摄像头模式
-            startCamera();
-        };
         
         window.onbeforeunload = () => {
             stopCamera();
