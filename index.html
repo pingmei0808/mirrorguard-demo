@@ -190,6 +190,35 @@
             <div class="tagline">基于蚂蚁医疗大模型 AntAngelMed 的 AI 脑梗风险评估系统</div>
         </header>
         
+        <!-- 患者信息 -->
+        <div class="panel" style="margin-bottom: 20px;">
+            <h2>👤 患者信息（用于公平性校准）</h2>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div>
+                    <label style="display: block; color: #8892b0; font-size: 14px; margin-bottom: 5px;">年龄</label>
+                    <input type="number" id="patientAge" placeholder="例如：65" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff;">
+                </div>
+                <div>
+                    <label style="display: block; color: #8892b0; font-size: 14px; margin-bottom: 5px;">性别</label>
+                    <select id="patientGender" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff;">
+                        <option value="">请选择</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; color: #8892b0; font-size: 14px; margin-bottom: 5px;">病史</label>
+                    <select id="patientHistory" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff;">
+                        <option value="false">无脑血管病史</option>
+                        <option value="true">有脑血管病史</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-top: 10px; font-size: 13px; color: #666;">
+                💡 基于 FAST-CAD 研究，这些信息帮助 AI 针对不同人群进行公平性校准
+            </div>
+        </div>
+        
         <div class="main-grid">
             <div class="panel">
                 <h2>📷 图像采集</h2>
@@ -363,10 +392,20 @@
                 
                 updateLoadingProgress(60, 'Claude AI 分析中...');
                 
+                // 收集患者信息
+                const patientInfo = {
+                    age: parseInt(document.getElementById('patientAge').value) || null,
+                    gender: document.getElementById('patientGender').value || null,
+                    hasHistory: document.getElementById('patientHistory').value === 'true'
+                };
+                
                 const response = await fetch(API_PROXY_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ imageBase64: capturedImage })
+                    body: JSON.stringify({ 
+                        imageBase64: capturedImage,
+                        patientInfo: patientInfo
+                    })
                 });
                 
                 if (!response.ok) {
