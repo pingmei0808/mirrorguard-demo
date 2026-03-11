@@ -1,0 +1,838 @@
+{
+  "timestamp": "2026-03-11T11:54:30.366Z",
+  "dataset": "synthetic-facial-palsy",
+  "total_samples": 100,
+  "confusion_matrix": {
+    "TP": 57,
+    "TN": 33,
+    "FP": 0,
+    "FN": 10
+  },
+  "metrics": {
+    "accuracy": "90.00",
+    "precision": "100.00",
+    "recall": "85.07",
+    "specificity": "100.00",
+    "f1_score": "91.93"
+  },
+  "by_severity": {
+    "normal": {
+      "total": 33,
+      "correct": 33
+    },
+    "mild": {
+      "total": 24,
+      "correct": 14
+    },
+    "moderate": {
+      "total": 15,
+      "correct": 8
+    },
+    "severe": {
+      "total": 28,
+      "correct": 28
+    }
+  },
+  "detailed_results": [
+    {
+      "filename": "images/synthetic_001.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.056"
+    },
+    {
+      "filename": "images/synthetic_002.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.026"
+    },
+    {
+      "filename": "images/synthetic_003.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.051"
+    },
+    {
+      "filename": "images/synthetic_004.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.238"
+    },
+    {
+      "filename": "images/synthetic_005.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.291"
+    },
+    {
+      "filename": "images/synthetic_006.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.074"
+    },
+    {
+      "filename": "images/synthetic_007.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.011"
+    },
+    {
+      "filename": "images/synthetic_008.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.144"
+    },
+    {
+      "filename": "images/synthetic_009.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.285"
+    },
+    {
+      "filename": "images/synthetic_010.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.110"
+    },
+    {
+      "filename": "images/synthetic_011.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.076"
+    },
+    {
+      "filename": "images/synthetic_012.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.294"
+    },
+    {
+      "filename": "images/synthetic_013.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.181"
+    },
+    {
+      "filename": "images/synthetic_014.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.170"
+    },
+    {
+      "filename": "images/synthetic_015.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.123"
+    },
+    {
+      "filename": "images/synthetic_016.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.051"
+    },
+    {
+      "filename": "images/synthetic_017.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.012"
+    },
+    {
+      "filename": "images/synthetic_018.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.038"
+    },
+    {
+      "filename": "images/synthetic_019.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.295"
+    },
+    {
+      "filename": "images/synthetic_020.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.067"
+    },
+    {
+      "filename": "images/synthetic_021.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.406"
+    },
+    {
+      "filename": "images/synthetic_022.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.011"
+    },
+    {
+      "filename": "images/synthetic_023.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.037"
+    },
+    {
+      "filename": "images/synthetic_024.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.135"
+    },
+    {
+      "filename": "images/synthetic_025.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.344"
+    },
+    {
+      "filename": "images/synthetic_026.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.038"
+    },
+    {
+      "filename": "images/synthetic_027.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.009"
+    },
+    {
+      "filename": "images/synthetic_028.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.014"
+    },
+    {
+      "filename": "images/synthetic_029.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.125"
+    },
+    {
+      "filename": "images/synthetic_030.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.298"
+    },
+    {
+      "filename": "images/synthetic_031.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.377"
+    },
+    {
+      "filename": "images/synthetic_032.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.009"
+    },
+    {
+      "filename": "images/synthetic_033.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.299"
+    },
+    {
+      "filename": "images/synthetic_034.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.042"
+    },
+    {
+      "filename": "images/synthetic_035.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.244"
+    },
+    {
+      "filename": "images/synthetic_036.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.330"
+    },
+    {
+      "filename": "images/synthetic_037.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.383"
+    },
+    {
+      "filename": "images/synthetic_038.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.345"
+    },
+    {
+      "filename": "images/synthetic_039.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.146"
+    },
+    {
+      "filename": "images/synthetic_040.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.044"
+    },
+    {
+      "filename": "images/synthetic_041.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.021"
+    },
+    {
+      "filename": "images/synthetic_042.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.039"
+    },
+    {
+      "filename": "images/synthetic_043.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.354"
+    },
+    {
+      "filename": "images/synthetic_044.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.174"
+    },
+    {
+      "filename": "images/synthetic_045.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.215"
+    },
+    {
+      "filename": "images/synthetic_046.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.023"
+    },
+    {
+      "filename": "images/synthetic_047.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.116"
+    },
+    {
+      "filename": "images/synthetic_048.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.241"
+    },
+    {
+      "filename": "images/synthetic_049.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.153"
+    },
+    {
+      "filename": "images/synthetic_050.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.014"
+    },
+    {
+      "filename": "images/synthetic_051.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.027"
+    },
+    {
+      "filename": "images/synthetic_052.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.029"
+    },
+    {
+      "filename": "images/synthetic_053.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.224"
+    },
+    {
+      "filename": "images/synthetic_054.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.415"
+    },
+    {
+      "filename": "images/synthetic_055.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.355"
+    },
+    {
+      "filename": "images/synthetic_056.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.037"
+    },
+    {
+      "filename": "images/synthetic_057.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.350"
+    },
+    {
+      "filename": "images/synthetic_058.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.381"
+    },
+    {
+      "filename": "images/synthetic_059.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.053"
+    },
+    {
+      "filename": "images/synthetic_060.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.126"
+    },
+    {
+      "filename": "images/synthetic_061.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.047"
+    },
+    {
+      "filename": "images/synthetic_062.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.412"
+    },
+    {
+      "filename": "images/synthetic_063.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.159"
+    },
+    {
+      "filename": "images/synthetic_064.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.042"
+    },
+    {
+      "filename": "images/synthetic_065.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.064"
+    },
+    {
+      "filename": "images/synthetic_066.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.052"
+    },
+    {
+      "filename": "images/synthetic_067.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.413"
+    },
+    {
+      "filename": "images/synthetic_068.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.170"
+    },
+    {
+      "filename": "images/synthetic_069.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.067"
+    },
+    {
+      "filename": "images/synthetic_070.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.166"
+    },
+    {
+      "filename": "images/synthetic_071.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.356"
+    },
+    {
+      "filename": "images/synthetic_072.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.073"
+    },
+    {
+      "filename": "images/synthetic_073.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.349"
+    },
+    {
+      "filename": "images/synthetic_074.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.256"
+    },
+    {
+      "filename": "images/synthetic_075.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.078"
+    },
+    {
+      "filename": "images/synthetic_076.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.056"
+    },
+    {
+      "filename": "images/synthetic_077.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.044"
+    },
+    {
+      "filename": "images/synthetic_078.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.407"
+    },
+    {
+      "filename": "images/synthetic_079.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.169"
+    },
+    {
+      "filename": "images/synthetic_080.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.012"
+    },
+    {
+      "filename": "images/synthetic_081.jpg",
+      "true_label": "medium",
+      "predicted_label": "low",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.077"
+    },
+    {
+      "filename": "images/synthetic_082.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.338"
+    },
+    {
+      "filename": "images/synthetic_083.jpg",
+      "true_label": "medium",
+      "predicted_label": "high",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.234"
+    },
+    {
+      "filename": "images/synthetic_084.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.159"
+    },
+    {
+      "filename": "images/synthetic_085.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.165"
+    },
+    {
+      "filename": "images/synthetic_086.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.047"
+    },
+    {
+      "filename": "images/synthetic_087.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.272"
+    },
+    {
+      "filename": "images/synthetic_088.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.058"
+    },
+    {
+      "filename": "images/synthetic_089.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.288"
+    },
+    {
+      "filename": "images/synthetic_090.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.302"
+    },
+    {
+      "filename": "images/synthetic_091.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.073"
+    },
+    {
+      "filename": "images/synthetic_092.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.171"
+    },
+    {
+      "filename": "images/synthetic_093.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.086"
+    },
+    {
+      "filename": "images/synthetic_094.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "moderate",
+      "simulated_score": "0.200",
+      "predicted_score": "0.148"
+    },
+    {
+      "filename": "images/synthetic_095.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.038"
+    },
+    {
+      "filename": "images/synthetic_096.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.319"
+    },
+    {
+      "filename": "images/synthetic_097.jpg",
+      "true_label": "high",
+      "predicted_label": "high",
+      "true_severity": "severe",
+      "simulated_score": "0.343",
+      "predicted_score": "0.374"
+    },
+    {
+      "filename": "images/synthetic_098.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "-0.036"
+    },
+    {
+      "filename": "images/synthetic_099.jpg",
+      "true_label": "low",
+      "predicted_label": "low",
+      "true_severity": "normal",
+      "simulated_score": "0.000",
+      "predicted_score": "0.017"
+    },
+    {
+      "filename": "images/synthetic_100.jpg",
+      "true_label": "medium",
+      "predicted_label": "medium",
+      "true_severity": "mild",
+      "simulated_score": "0.100",
+      "predicted_score": "0.115"
+    }
+  ]
+}

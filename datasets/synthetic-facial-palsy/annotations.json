@@ -1,0 +1,1502 @@
+[
+  {
+    "filename": "images/synthetic_001.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 50,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_002.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 34,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_003.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 31,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_004.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_005.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_006.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 39,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_007.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 36,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_008.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 34,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_009.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 56,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_010.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 53,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_011.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 70,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_012.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 77,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_013.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 58,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_014.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 34,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_015.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 30,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_016.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_017.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 76,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_018.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 78,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_019.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 59,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_020.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 38,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_021.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_022.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 58,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_023.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 72,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_024.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 47,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_025.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 39,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_026.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 75,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_027.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_028.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 65,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_029.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 56,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_030.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 78,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_031.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 61,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_032.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 43,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_033.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 47,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_034.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 57,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_035.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 33,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_036.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 42,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_037.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 61,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_038.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 50,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_039.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 54,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_040.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 69,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_041.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 39,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_042.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 55,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_043.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 33,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_044.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 44,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_045.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 64,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_046.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 33,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_047.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 60,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_048.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_049.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 62,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_050.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 37,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_051.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 72,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_052.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 70,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_053.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 64,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_054.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 60,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_055.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 74,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_056.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 43,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_057.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 76,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_058.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 57,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_059.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 54,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_060.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 45,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_061.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 62,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_062.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 59,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_063.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 58,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_064.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_065.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 59,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_066.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 60,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_067.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 56,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_068.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 57,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_069.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 34,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_070.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 42,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_071.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 75,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_072.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 37,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_073.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 37,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_074.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 66,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_075.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 73,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_076.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 33,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_077.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 76,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_078.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 42,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_079.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 51,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_080.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 62,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_081.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 36,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_082.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 63,
+      "gender": "female",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_083.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 68,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_084.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 71,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_085.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 35,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_086.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 76,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_087.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 51,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_088.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 38,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_089.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 66,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_090.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 41,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_091.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 47,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_092.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 48,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_093.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 45,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_094.jpg",
+    "label": "medium",
+    "severity": "moderate",
+    "simulated_symptoms": {
+      "mouth_drop": 0.2,
+      "eye_droop": 0.15,
+      "nasolabial": 0.25
+    },
+    "patientInfo": {
+      "age": 69,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_095.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 40,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_096.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 30,
+      "gender": "male",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_097.jpg",
+    "label": "high",
+    "severity": "severe",
+    "simulated_symptoms": {
+      "mouth_drop": 0.35,
+      "eye_droop": 0.28,
+      "nasolabial": 0.4
+    },
+    "patientInfo": {
+      "age": 39,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_098.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 57,
+      "gender": "male",
+      "hasHistory": true
+    }
+  },
+  {
+    "filename": "images/synthetic_099.jpg",
+    "label": "low",
+    "severity": "normal",
+    "simulated_symptoms": {
+      "mouth_drop": 0,
+      "eye_droop": 0,
+      "nasolabial": 0
+    },
+    "patientInfo": {
+      "age": 58,
+      "gender": "female",
+      "hasHistory": false
+    }
+  },
+  {
+    "filename": "images/synthetic_100.jpg",
+    "label": "medium",
+    "severity": "mild",
+    "simulated_symptoms": {
+      "mouth_drop": 0.1,
+      "eye_droop": 0.08,
+      "nasolabial": 0.12
+    },
+    "patientInfo": {
+      "age": 77,
+      "gender": "male",
+      "hasHistory": true
+    }
+  }
+]
