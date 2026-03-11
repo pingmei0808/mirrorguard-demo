@@ -19,57 +19,58 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Missing image data' });
     }
     
-    const apiKey = process.env.ANT_API_KEY;
+    // ✅ 使用 Anthropic API Key
+    const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: 'Server configuration error: missing API key' });
+      return res.status(500).json({ error: 'Server configuration error: missing ANTHROPIC_API_KEY' });
     }
     
     // 提取患者信息用于公平性校准
     const { age, gender, hasHistory } = patientInfo;
     const demographicGroup = getDemographicGroup(age, gender);
     
+    // 清理 base64 数据（去掉 data:image/...;base64, 前缀）
     const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, '');
     
-    // 基于 FAST-CAD 论文思想的增强 Prompt
+    // 构建增强 Prompt（基于 FAST-CAD 论文）
     const systemPrompt = buildFairnessAwarePrompt(demographicGroup, hasHistory);
     
-    // 蚂蚁医疗大模型 AntAngelMed
-    const response = await fetch('https://api.tbox.cn/api/llm/v1/chat/completions', {
+    // ✅ 改用 Anthropic Claude API（真正的多模态模型）
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'AntAngelMed',
-        temperature: 0.2, // 降低随机性，提高一致性
-        messages: [
-          {
-            role: 'system',
-            content: systemPrompt
-          },
-          {
-            role: 'user',
-            content: [
-              {
-                type: 'text',
-                text: `请分析这位${age ? age + '岁' : ''}${gender || ''}患者的面部照片，评估脑卒中风险。${hasHistory ? '患者有脑血管病史，需特别关注。' : ''}`
-              },
-              {
-                type: 'image_url',
-                image_url: {
-                  url: `data:image/jpeg;base64,${base64Data}`
-                }
+        model: 'claude-opus-4-6',
+        max_tokens: 2048,
+        messages: [{
+          role: 'user',
+          content: [
+            {
+              type: 'image',
+              source: {
+                type: 'base64',
+                media_type: 'image/jpeg',
+                data: base64Data
               }
-            ]
-          }
-        ]
+            },
+            {
+              type: 'text',
+              text: `请分析这位${age ? age + '岁' : ''}${gender === 'male' ? '男性' : gender === 'female' ? '女性' : ''}患者的面部照片，评估脑卒中风险。${hasHistory ? '患者有脑血管病史，需特别关注。' : ''}
+
+请严格按照 JSON 格式输出分析结果。`
+            }
+          ]
+        }]
       })
     });
     
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(`API error: ${error.error?.message || response.statusText}`);
+      const errorText = await response.text();
+      throw new Error(`Claude API error (${response.status}): ${errorText}`);
     }
     
     const data = await response.json();
@@ -139,13 +140,13 @@ ${hasHistory ? '\n【病史提醒】该患者有脑血管病史，任何面部�
 - 无明显的神经功能缺损体征
 
 【置信度评分规则】
-- 90-100%: 典型的急性中枢性面瘫三联征（额纹消失+口角歪斜+鼻唇沟变浅）
+- 90-100%: 典型的急性中枢性面瘫三联征（额纹消失 + 口角歪斜 + 鼻唇沟变浅）
 - 75-89%: 明显的病理性不对称，强烈提示脑卒中
 - 60-74%: 中度不对称，需要结合临床症状判断
 - 40-59%: 轻度不对称，可能是生理性差异
 - 0-39%: 无明显异常
 
-【输出格式 - 必须严格遵循】
+【输出格式 - 必须严格遵循 JSON 格式】
 {
   "risk_level": "low|medium|high",
   "confidence": 0-100,
@@ -171,7 +172,6 @@ function applyFairnessCalibration(result, demographicGroup, hasHistory) {
   
   // 高龄人群：降低对轻微不对称的敏感度（避免假阳性）
   if (demographicGroup && demographicGroup.startsWith('elderly')) {
-    // 老年人常有生理性不对称，需要更高的置信度才判定为高风险
     if (result.risk_level === 'high' && result.confidence < 85) {
       calibratedRisk = 'medium';
       calibratedConfidence -= 10;
@@ -197,7 +197,9 @@ function applyFairnessCalibration(result, demographicGroup, hasHistory) {
 
 function parseAIResponse(apiResponse) {
   try {
-    const content = apiResponse.choices[0].message.content;
+    const content = apiResponse.choices?.[0]?.message?.content || apiResponse.content?.[0]?.text || '';
+    
+    // 尝试提取 JSON
     const jsonMatch = content.match(/\{[\s\S]*?\}/);
     if (jsonMatch) {
       const parsed = JSON.parse(jsonMatch[0]);
