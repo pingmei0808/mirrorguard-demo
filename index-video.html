@@ -555,22 +555,19 @@
         
         // 时序分析
         function temporalAnalyze() {
-            if (frameHistory.length < CONFIG.windowSize / 2) {
-                return null;
-            }
-            
             const scores = frameHistory.map(f => f.symmetry.overall);
-            const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+            const avgScore = scores.reduce((a, b) => a + b, 0) / (scores.length || 1);
             
             const abnormalFrames = scores.filter(s => s > CONFIG.mouthThreshold).length;
-            const abnormalRatio = abnormalFrames / scores.length;
+            const abnormalRatio = scores.length > 0 ? abnormalFrames / scores.length : 0;
             
             const isAlert = abnormalRatio >= CONFIG.alertThreshold;
             
             return {
                 averageScore: avgScore,
                 abnormalRatio,
-                isAlert
+                isAlert,
+                frameCount: scores.length
             };
         }
         
@@ -623,7 +620,7 @@
                 return;
             }
             
-            console.log('📊 更新显示:', symmetry);
+            console.log('📊 更新显示:', { symmetry, temporalAnalysis });
             
             // 对称性
             const symmetryEl = document.getElementById('symmetryValue');
@@ -643,28 +640,31 @@
             eyeEl.textContent = eyeValue;
             eyeEl.className = 'metric-value ' + (symmetry.eyes < 0.02 ? 'good' : 'danger');
             
-            // 异常比例
-            if (temporalAnalysis) {
-                const abnormalEl = document.getElementById('abnormalValue');
-                abnormalEl.textContent = (temporalAnalysis.abnormalRatio * 100).toFixed(0) + '%';
-                abnormalEl.className = 'metric-value ' + (temporalAnalysis.abnormalRatio < 0.3 ? 'good' : temporalAnalysis.abnormalRatio < 0.7 ? 'warning' : 'danger');
-                
-                // 风险等级
-                const riskEl = document.getElementById('riskValue');
-                let riskText = '✅ 正常';
-                let riskClass = 'good';
-                
-                if (temporalAnalysis.abnormalRatio >= 0.7) {
+            // 异常比例和风险等级（即使 temporalAnalysis 不完整也显示）
+            const abnormalRatio = temporalAnalysis ? temporalAnalysis.abnormalRatio : 0;
+            const frameCount = temporalAnalysis ? temporalAnalysis.frameCount : frameHistory.length;
+            
+            const abnormalEl = document.getElementById('abnormalValue');
+            abnormalEl.textContent = `${(abnormalRatio * 100).toFixed(0)}% (${frameCount}帧)`;
+            abnormalEl.className = 'metric-value ' + (abnormalRatio < 0.3 ? 'good' : abnormalRatio < 0.7 ? 'warning' : 'danger');
+            
+            // 风险等级
+            const riskEl = document.getElementById('riskValue');
+            let riskText = frameCount < 15 ? '⏳ 收集中...' : '✅ 正常';
+            let riskClass = 'good';
+            
+            if (frameCount >= 15) {
+                if (abnormalRatio >= 0.7) {
                     riskText = '🚨 高风险';
                     riskClass = 'danger';
-                } else if (temporalAnalysis.abnormalRatio >= 0.3) {
+                } else if (abnormalRatio >= 0.3) {
                     riskText = '⚠️ 中度关注';
                     riskClass = 'warning';
                 }
-                
-                riskEl.textContent = riskText;
-                riskEl.className = 'metric-value ' + riskClass;
             }
+            
+            riskEl.textContent = riskText;
+            riskEl.className = 'metric-value ' + riskClass;
         }
         
         // 触发警报
