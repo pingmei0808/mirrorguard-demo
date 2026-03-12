@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MirrorGuard 调试版</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: #fff; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .video-container { position: relative; width: 100%; aspect-ratio: 4/3; background: #000; border-radius: 12px; overflow: hidden; }
+        #video, #canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        #canvas { pointer-events: none; }
+        .status { margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px; }
+        .btn { padding: 12px 24px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); border: none; border-radius: 8px; color: white; font-size: 16px; cursor: pointer; margin: 10px 5px; }
+        #log { margin-top: 20px; padding: 10px; background: #000; border-radius: 8px; font-family: monospace; font-size: 12px; max-height: 300px; overflow-y: auto; }
+        .log-entry { margin: 5px 0; padding: 5px; border-left: 3px solid #00d4ff; padding-left: 10px; }
+        .error { border-left-color: #ff4757; color: #ff6b6b; }
+        .success { border-left-color: #00ff88; color: #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦞 MirrorGuard 调试版</h1>
+        
+        <div class="video-container">
+            <video id="video" playsinline muted></video>
+            <canvas id="canvas"></canvas>
+        </div>
+        
+        <div>
+            <button class="btn" onclick="start()">▶️ 开始</button>
+            <button class="btn" onclick="stop()">⏹️ 停止</button>
+        </div>
+        
+        <div class="status">
+            <div>状态：<span id="status">⏹️ 未启动</span></div>
+            <div>对称性：<span id="symmetry">--</span></div>
+            <div>嘴角：<span id="mouth">--</span></div>
+            <div>眼睛：<span id="eyes">--</span></div>
+        </div>
+        
+        <div id="log"></div>
+    </div>
+
+    <script>
+        let faceMesh;
+        let isRunning = false;
+        let stream = null;
+        
+        function log(msg, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            logDiv.insertBefore(entry, logDiv.firstChild);
+            console.log(msg);
+        }
+        
+        async function start() {
+            log('开始启动...');
+            
+            try {
+                // 检查 FaceMesh
+                if (typeof FaceMesh === 'undefined') {
+                    throw new Error('FaceMesh 未加载！');
+                }
+                log('✅ FaceMesh 已加载', 'success');
+                
+                // 获取摄像头
+                log('请求摄像头权限...');
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' }
+                });
+                log('✅ 摄像头已启动', 'success');
+                
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+                await video.play();
+                log('✅ 视频播放中', 'success');
+                
+                // 设置 canvas
+                const canvas = document.getElementById('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                log(`Canvas 尺寸：${canvas.width}x${canvas.height}`);
+                
+                // 初始化 FaceMesh
+                faceMesh = new FaceMesh({
+                    locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633549677/${file}`
+                });
+                
+                faceMesh.setOptions({
+                    maxNumFaces: 1,
+                    refineLandmarks: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+                
+                faceMesh.onResults(onResults);
+                log('✅ FaceMesh 配置完成', 'success');
+                
+                isRunning = true;
+                document.getElementById('status').textContent = '🟢 检测中';
+                
+                // 开始处理
+                processFrame();
+                
+            } catch (error) {
+                log(`❌ 错误：${error.message}`, 'error');
+                alert('启动失败：' + error.message);
+            }
+        }
+        
+        async function processFrame() {
+            if (!isRunning) return;
+            
+            try {
+                const video = document.getElementById('video');
+                await faceMesh.send({ image: video });
+            } catch (error) {
+                log(`帧处理错误：${error.message}`, 'error');
+            }
+            
+            requestAnimationFrame(processFrame);
+        }
+        
+        function onResults(results) {
+            if (!results || !results.multiFaceLandmarks) {
+                return;
+            }
+            
+            if (results.multiFaceLandmarks.length === 0) {
+                log('⚠️ 未检测到人脸');
+                return;
+            }
+            
+            log(`✅ 检测到人脸！特征点：${results.multiFaceLandmarks[0].length}`, 'success');
+            
+            const landmarks = results.multiFaceLandmarks[0];
+            
+            // 计算对称性
+            const mouthLeft = landmarks[61];
+            const mouthRight = landmarks[291];
+            const mouthAsymmetry = Math.abs(mouthLeft.y - mouthRight.y);
+            
+            const leftEyeTop = landmarks[159];
+            const leftEyeBottom = landmarks[145];
+            const rightEyeTop = landmarks[386];
+            const rightEyeBottom = landmarks[374];
+            
+            const leftEyeHeight = Math.abs(leftEyeTop.y - leftEyeBottom.y);
+            const rightEyeHeight = Math.abs(rightEyeTop.y - rightEyeBottom.y);
+            const eyeAsymmetry = Math.abs(leftEyeHeight - rightEyeHeight);
+            
+            const overall = (mouthAsymmetry * 5 + eyeAsymmetry * 4) / 9;
+            
+            // 更新显示
+            document.getElementById('symmetry').textContent = (overall * 1000).toFixed(1) + '%';
+            document.getElementById('mouth').textContent = (mouthAsymmetry * 1000).toFixed(1);
+            document.getElementById('eyes').textContent = (eyeAsymmetry * 1000).toFixed(1);
+            
+            // 绘制
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff88';
+            [61, 291, 33, 133, 362, 263, 1].forEach(idx => {
+                const p = landmarks[idx];
+                const x = p.x * canvas.width;
+                const y = p.y * canvas.height;
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+        }
+        
+        function stop() {
+            isRunning = false;
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            document.getElementById('status').textContent = '⏹️ 已停止';
+            log('⏹️ 已停止');
+        }
+        
+        window.addEventListener('load', () => {
+            log('页面加载完成');
+            log(`FaceMesh 类型：${typeof FaceMesh}`);
+        });
+    </script>
+</body>
+</html>
