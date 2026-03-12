@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>镜守 MirrorGuard - 视频实时检测</title>
-    <!-- MediaPipe Face Mesh -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <!-- MediaPipe Face Mesh - 使用稳定版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633549677/face_mesh.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1633549677/camera_utils.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1633549677/drawing_utils.min.js"></script>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -452,7 +452,11 @@
                 // 处理每一帧
                 async function processFrame() {
                     if (!isRunning) return;
-                    await faceMesh.send({ image: video });
+                    try {
+                        await faceMesh.send({ image: video });
+                    } catch (err) {
+                        console.error('帧处理错误:', err);
+                    }
                     requestAnimationFrame(processFrame);
                 }
                 
