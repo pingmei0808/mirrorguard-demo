@@ -16,47 +16,67 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             color: #fff;
+            -webkit-text-size-adjust: 100%;
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 30px 0; }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 15px;
+        }
+        header { text-align: center; padding: 20px 0 15px; }
         .logo {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: bold;
             background: linear-gradient(90deg, #00d4ff, #7b2cbf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .tagline { color: #8892b0; font-size: 16px; margin-top: 10px; }
+        .tagline { 
+            color: #8892b0; 
+            font-size: 14px; 
+            margin-top: 8px;
+            padding: 0 10px;
+        }
         
         .mode-badge {
             display: inline-block;
-            padding: 6px 12px;
+            padding: 5px 10px;
             background: linear-gradient(90deg, #ff6b6b, #feca57);
             border-radius: 20px;
-            font-size: 12px;
-            margin-top: 10px;
+            font-size: 11px;
+            margin-top: 8px;
             font-weight: bold;
         }
         
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-top: 15px;
         }
-        @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { 
+            .main-grid { grid-template-columns: 1fr; } 
+        }
+        @media (max-width: 480px) {
+            .container { padding: 10px; }
+            .logo { font-size: 26px; }
+            .tagline { font-size: 12px; }
+            .mode-badge { font-size: 10px; padding: 4px 8px; }
+            .panel { padding: 15px; }
+            .panel h2 { font-size: 16px; margin-bottom: 12px; }
+        }
         
         .panel {
             background: rgba(255,255,255,0.05);
             border-radius: 16px;
-            padding: 25px;
+            padding: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
         }
         .panel h2 {
             color: #00d4ff;
             margin-bottom: 18px;
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .video-container {
@@ -89,13 +109,18 @@
         
         .btn {
             flex: 1;
-            padding: 14px;
+            padding: 12px;
             border: none;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+        }
+        
+        @media (max-width: 480px) {
+            .controls { gap: 8px; }
+            .btn { padding: 10px; font-size: 13px; }
         }
         
         .btn-primary {
@@ -122,15 +147,15 @@
         .status-panel {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 15px;
         }
         
         .metric {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -140,12 +165,19 @@
         
         .metric-label {
             color: #8892b0;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .metric-value {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
+        }
+        
+        @media (max-width: 480px) {
+            .status-panel { padding: 12px; }
+            .metric-label { font-size: 12px; }
+            .metric-value { font-size: 14px; }
+            .metric { padding: 8px 0; }
         }
         
         .metric-value.good { color: #00ff88; }
@@ -156,8 +188,8 @@
             background: rgba(255, 71, 87, 0.1);
             border: 2px solid #ff4757;
             border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 15px;
             display: none;
         }
         
@@ -173,14 +205,15 @@
         
         .alert-title {
             color: #ff4757;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .alert-content {
             color: #ffb3b3;
             line-height: 1.6;
+            font-size: 13px;
         }
         
         .loading {
@@ -198,12 +231,16 @@
         }
         
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(0, 212, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0, 212, 255, 0.2);
             border-top-color: #00d4ff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+        }
+        
+        @media (max-width: 480px) {
+            .spinner { width: 35px; height: 35px; border-width: 2px; }
         }
         
         @keyframes spin {
@@ -211,19 +248,29 @@
         }
         
         .loading-text {
-            margin-top: 15px;
+            margin-top: 12px;
             color: #00d4ff;
-            font-size: 16px;
+            font-size: 14px;
+            text-align: center;
+            padding: 0 10px;
         }
         
         .tech-note {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 12px;
             background: rgba(123, 44, 191, 0.1);
             border-radius: 10px;
-            border-left: 4px solid #7b2cbf;
-            font-size: 13px;
+            border-left: 3px solid #7b2cbf;
+            font-size: 12px;
             color: #8892b0;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 480px) {
+            .alert-panel { padding: 12px; }
+            .alert-title { font-size: 16px; }
+            .tech-note { font-size: 11px; padding: 10px; }
+            .cloud-result-panel h3 { font-size: 14px; }
         }
     </style>
 </head>
@@ -312,8 +359,8 @@
                 </div>
                 
                 <!-- 云端分析结果 -->
-                <div class="status-panel" id="cloudResultPanel" style="display: none; margin-top: 20px;">
-                    <h3 style="color: #00d4ff; margin-bottom: 15px;">☁️ 云端深度分析结果</h3>
+                <div class="status-panel cloud-result-panel" id="cloudResultPanel" style="display: none; margin-top: 15px;">
+                    <h3 style="color: #00d4ff; margin-bottom: 12px; font-size: 16px;">☁️ 云端深度分析结果</h3>
                     <div id="cloudResultContent"></div>
                 </div>
             </div>
