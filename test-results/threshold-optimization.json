@@ -1,0 +1,234 @@
+{
+  "timestamp": "2026-03-12T11:19:44.367Z",
+  "originalConfig": {
+    "mouth": 0.05,
+    "eye": 0.03,
+    "alert": 0.7,
+    "name": "当前配置"
+  },
+  "testedConfigs": [
+    {
+      "mouth": 0.05,
+      "eye": 0.03,
+      "alert": 0.7,
+      "name": "当前配置"
+    },
+    {
+      "mouth": 0.04,
+      "eye": 0.025,
+      "alert": 0.6,
+      "name": "配置 A (轻度降低)"
+    },
+    {
+      "mouth": 0.035,
+      "eye": 0.02,
+      "alert": 0.5,
+      "name": "配置 B (中度降低)"
+    },
+    {
+      "mouth": 0.03,
+      "eye": 0.018,
+      "alert": 0.4,
+      "name": "配置 C (激进降低)"
+    },
+    {
+      "mouth": 0.045,
+      "eye": 0.028,
+      "alert": 0.55,
+      "name": "配置 D (平衡)"
+    }
+  ],
+  "results": [
+    {
+      "config": {
+        "mouth": 0.05,
+        "eye": 0.03,
+        "alert": 0.7,
+        "name": "当前配置"
+      },
+      "confusionMatrix": {
+        "TP": 21,
+        "TN": 20,
+        "FP": 5,
+        "FN": 4
+      },
+      "accuracy": "82.00",
+      "precision": "80.77",
+      "recall": "84.00",
+      "f1Score": "82.35",
+      "bySeverity": {
+        "normal": {
+          "total": 25,
+          "correct": 20
+        },
+        "mild": {
+          "total": 10,
+          "correct": 6
+        },
+        "moderate": {
+          "total": 10,
+          "correct": 10
+        },
+        "severe": {
+          "total": 5,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "config": {
+        "mouth": 0.04,
+        "eye": 0.025,
+        "alert": 0.6,
+        "name": "配置 A (轻度降低)"
+      },
+      "confusionMatrix": {
+        "TP": 21,
+        "TN": 15,
+        "FP": 10,
+        "FN": 4
+      },
+      "accuracy": "72.00",
+      "precision": "67.74",
+      "recall": "84.00",
+      "f1Score": "74.99",
+      "bySeverity": {
+        "normal": {
+          "total": 25,
+          "correct": 15
+        },
+        "mild": {
+          "total": 10,
+          "correct": 9
+        },
+        "moderate": {
+          "total": 10,
+          "correct": 7
+        },
+        "severe": {
+          "total": 5,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "config": {
+        "mouth": 0.035,
+        "eye": 0.02,
+        "alert": 0.5,
+        "name": "配置 B (中度降低)"
+      },
+      "confusionMatrix": {
+        "TP": 25,
+        "TN": 13,
+        "FP": 12,
+        "FN": 0
+      },
+      "accuracy": "76.00",
+      "precision": "67.57",
+      "recall": "100.00",
+      "f1Score": "80.64",
+      "bySeverity": {
+        "normal": {
+          "total": 25,
+          "correct": 13
+        },
+        "mild": {
+          "total": 10,
+          "correct": 10
+        },
+        "moderate": {
+          "total": 10,
+          "correct": 10
+        },
+        "severe": {
+          "total": 5,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "config": {
+        "mouth": 0.03,
+        "eye": 0.018,
+        "alert": 0.4,
+        "name": "配置 C (激进降低)"
+      },
+      "confusionMatrix": {
+        "TP": 23,
+        "TN": 10,
+        "FP": 15,
+        "FN": 2
+      },
+      "accuracy": "66.00",
+      "precision": "60.53",
+      "recall": "92.00",
+      "f1Score": "73.01",
+      "bySeverity": {
+        "normal": {
+          "total": 25,
+          "correct": 10
+        },
+        "mild": {
+          "total": 10,
+          "correct": 9
+        },
+        "moderate": {
+          "total": 10,
+          "correct": 9
+        },
+        "severe": {
+          "total": 5,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "config": {
+        "mouth": 0.045,
+        "eye": 0.028,
+        "alert": 0.55,
+        "name": "配置 D (平衡)"
+      },
+      "confusionMatrix": {
+        "TP": 19,
+        "TN": 22,
+        "FP": 3,
+        "FN": 6
+      },
+      "accuracy": "82.00",
+      "precision": "86.36",
+      "recall": "76.00",
+      "f1Score": "80.85",
+      "bySeverity": {
+        "normal": {
+          "total": 25,
+          "correct": 22
+        },
+        "mild": {
+          "total": 10,
+          "correct": 7
+        },
+        "moderate": {
+          "total": 10,
+          "correct": 7
+        },
+        "severe": {
+          "total": 5,
+          "correct": 5
+        }
+      }
+    }
+  ],
+  "recommendedConfig": {
+    "mouth": 0.05,
+    "eye": 0.03,
+    "alert": 0.7,
+    "name": "当前配置"
+  },
+  "improvement": {
+    "accuracyGain": "0.00",
+    "recallGain": "0.00",
+    "f1Gain": "0.00"
+  }
+}

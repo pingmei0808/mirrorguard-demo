@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-12T07:21:26.717Z",
+  "timestamp": "2026-03-12T11:25:27.786Z",
   "apiUrl": "https://mirrorguard-demo.vercel.app/api/analyze",
   "config": {
     "numSamples": 50,
@@ -9,25 +9,25 @@
   "metrics": {
     "totalSamples": 50,
     "confusionMatrix": {
-      "TP": 19,
-      "TN": 23,
-      "FP": 2,
-      "FN": 6
+      "TP": 22,
+      "TN": 22,
+      "FP": 3,
+      "FN": 3
     },
-    "accuracy": "84.00",
-    "precision": "90.48",
-    "recall": "76.00",
-    "specificity": "92.00",
-    "f1Score": "82.60"
+    "accuracy": "88.00",
+    "precision": "88.00",
+    "recall": "88.00",
+    "specificity": "88.00",
+    "f1Score": "87.99"
   },
   "bySeverity": {
     "normal": {
       "total": 25,
-      "correct": 23
+      "correct": 22
     },
     "mild": {
       "total": 10,
-      "correct": 5
+      "correct": 7
     },
     "moderate": {
       "total": 10,
@@ -161,7 +161,7 @@
     {
       "id": "normal_18",
       "trueLabel": "low",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "normal",
       "success": true
     },
@@ -189,14 +189,14 @@
     {
       "id": "normal_22",
       "trueLabel": "low",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "normal",
       "success": true
     },
     {
       "id": "normal_23",
       "trueLabel": "low",
-      "predictedLabel": "medium",
+      "predictedLabel": "low",
       "trueSeverity": "normal",
       "success": true
     },
@@ -217,21 +217,21 @@
     {
       "id": "mild_1",
       "trueLabel": "medium",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "mild",
       "success": true
     },
     {
       "id": "mild_2",
       "trueLabel": "medium",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "mild",
       "success": true
     },
     {
       "id": "mild_3",
       "trueLabel": "medium",
-      "predictedLabel": "high",
+      "predictedLabel": "low",
       "trueSeverity": "mild",
       "success": true
     },
@@ -266,35 +266,35 @@
     {
       "id": "mild_8",
       "trueLabel": "medium",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "mild",
       "success": true
     },
     {
       "id": "mild_9",
       "trueLabel": "medium",
-      "predictedLabel": "low",
+      "predictedLabel": "high",
       "trueSeverity": "mild",
       "success": true
     },
     {
       "id": "mild_10",
       "trueLabel": "medium",
-      "predictedLabel": "medium",
+      "predictedLabel": "low",
       "trueSeverity": "mild",
       "success": true
     },
     {
       "id": "moderate_1",
       "trueLabel": "medium",
-      "predictedLabel": "medium",
+      "predictedLabel": "high",
       "trueSeverity": "moderate",
       "success": true
     },
     {
       "id": "moderate_2",
       "trueLabel": "medium",
-      "predictedLabel": "medium",
+      "predictedLabel": "low",
       "trueSeverity": "moderate",
       "success": true
     },
@@ -308,14 +308,14 @@
     {
       "id": "moderate_4",
       "trueLabel": "medium",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "moderate",
       "success": true
     },
     {
       "id": "moderate_5",
       "trueLabel": "medium",
-      "predictedLabel": "low",
+      "predictedLabel": "medium",
       "trueSeverity": "moderate",
       "success": true
     },
@@ -329,7 +329,7 @@
     {
       "id": "moderate_7",
       "trueLabel": "medium",
-      "predictedLabel": "medium",
+      "predictedLabel": "high",
       "trueSeverity": "moderate",
       "success": true
     },
@@ -350,7 +350,7 @@
     {
       "id": "moderate_10",
       "trueLabel": "medium",
-      "predictedLabel": "high",
+      "predictedLabel": "medium",
       "trueSeverity": "moderate",
       "success": true
     },
