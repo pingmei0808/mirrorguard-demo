@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>镜守 MirrorGuard - 视频实时检测</title>
+    <!-- MediaPipe Face Mesh -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633549677/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1633549677/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1633549677/drawing_utils.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 30px 0; }
+        .logo {
+            font-size: 42px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tagline { color: #8892b0; font-size: 16px; margin-top: 10px; }
+        
+        .mode-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+        
+        .panel {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .panel h2 {
+            color: #00d4ff;
+            margin-bottom: 18px;
+            font-size: 20px;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #0d1b2a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        #videoElement, #canvasElement {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        #canvasElement {
+            pointer-events: none;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            color: white;
+        }
+        
+        .status-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .metric:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            color: #8892b0;
+            font-size: 14px;
+        }
+        
+        .metric-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .metric-value.good { color: #00ff88; }
+        .metric-value.warning { color: #ffc107; }
+        .metric-value.danger { color: #ff4757; }
+        
+        .alert-panel {
+            background: rgba(255, 71, 87, 0.1);
+            border: 2px solid #ff4757;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .alert-panel.show {
+            display: block;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .alert-title {
+            color: #ff4757;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .alert-content {
+            color: #ffb3b3;
+            line-height: 1.6;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 212, 255, 0.2);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 15px;
+            color: #00d4ff;
+            font-size: 16px;
+        }
+        
+        .tech-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(123, 44, 191, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #7b2cbf;
+            font-size: 13px;
+            color: #8892b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">镜守 MirrorGuard</div>
+            <div class="tagline">视频实时脑梗风险监测系统</div>
+            <div class="mode-badge">🎥 混合架构：前端实时 + 云端深度分析</div>
+        </header>
+        
+        <div class="main-grid">
+            <!-- 视频输入面板 -->
+            <div class="panel">
+                <h2>📹 视频实时检测</h2>
+                
+                <div class="video-container">
+                    <video id="videoElement" playsinline muted></video>
+                    <canvas id="canvasElement"></canvas>
+                    
+                    <div class="loading" id="loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <div class="loading-text">初始化 MediaPipe...</div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button class="btn btn-primary" id="startBtn" onclick="startDetection()">
+                        ▶️ 开始检测
+                    </button>
+                    <button class="btn btn-danger" id="stopBtn" onclick="stopDetection()" disabled>
+                        ⏹️ 停止检测
+                    </button>
+                </div>
+                
+                <div class="tech-note">
+                    <strong>💡 工作原理：</strong><br>
+                    • 前端：MediaPipe Face Mesh 实时追踪 468 个面部特征点（30 FPS）<br>
+                    • 本地：计算面部对称性，滑动窗口时序分析<br>
+                    • 云端：检测到异常时，上传单帧到 Claude Opus 4.6 深度分析
+                </div>
+            </div>
+            
+            <!-- 状态面板 -->
+            <div class="panel">
+                <h2>📊 实时状态</h2>
+                
+                <div class="status-panel">
+                    <div class="metric">
+                        <span class="metric-label">检测状态</span>
+                        <span class="metric-value" id="statusValue">⏹️ 未启动</span>
+                    </div>
+                    
+                    <div class="metric">
+                        <span class="metric-label">面部对称性</span>
+                        <span class="metric-value" id="symmetryValue">--</span>
+                    </div>
+                    
+                    <div class="metric">
+                        <span class="metric-label">嘴角不对称</span>
+                        <span class="metric-value" id="mouthValue">--</span>
+                    </div>
+                    
+                    <div class="metric">
+                        <span class="metric-label">眼睛不对称</span>
+                        <span class="metric-value" id="eyeValue">--</span>
+                    </div>
+                    
+                    <div class="metric">
+                        <span class="metric-label">异常帧比例</span>
+                        <span class="metric-value" id="abnormalValue">--</span>
+                    </div>
+                    
+                    <div class="metric">
+                        <span class="metric-label">风险等级</span>
+                        <span class="metric-value" id="riskValue">--</span>
+                    </div>
+                </div>
+                
+                <!-- 警报警示 -->
+                <div class="alert-panel" id="alertPanel">
+                    <div class="alert-title">🚨 检测到面部不对称！</div>
+                    <div class="alert-content" id="alertContent">
+                        正在上传到云端进行深度分析...
+                    </div>
+                </div>
+                
+                <!-- 云端分析结果 -->
+                <div class="status-panel" id="cloudResultPanel" style="display: none; margin-top: 20px;">
+                    <h3 style="color: #00d4ff; margin-bottom: 15px;">☁️ 云端深度分析结果</h3>
+                    <div id="cloudResultContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 配置
+        const CONFIG = {
+            apiUrl: '/api/analyze',
+            mouthThreshold: 0.05,
+            eyeThreshold: 0.03,
+            windowSize: 30,
+            alertThreshold: 0.7
+        };
+        
+        // 状态
+        let detector = null;
+        let isRunning = false;
+        let frameHistory = [];
+        let lastAlertTime = 0;
+        
+        // 初始化
+        async function init() {
+            console.log('🚀 MirrorGuard 视频实时检测初始化');
+            
+            // 设置 canvas 尺寸
+            const video = document.getElementById('videoElement');
+            const canvas = document.getElementById('canvasElement');
+            
+            video.onloadedmetadata = () => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+            };
+        }
+        
+        // 开始检测
+        async function startDetection() {
+            if (isRunning) return;
+            
+            const loading = document.getElementById('loading');
+            loading.style.display = 'flex';
+            
+            try {
+                // 获取摄像头
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        width: { ideal: 640 },
+                        height: { ideal: 480 },
+                        facingMode: 'user'
+                    }
+                });
+                
+                const video = document.getElementById('videoElement');
+                video.srcObject = stream;
+                await video.play();
+                
+                // 初始化 MediaPipe
+                const faceMesh = new FaceMesh({
+                    locateFile: (file) => {
+                        return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633549677/${file}`;
+                    }
+                });
+                
+                faceMesh.setOptions({
+                    maxNumFaces: 1,
+                    refineLandmarks: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+                
+                faceMesh.onResults(onResults);
+                
+                // 开始处理
+                isRunning = true;
+                frameHistory = [];
+                
+                document.getElementById('startBtn').disabled = true;
+                document.getElementById('stopBtn').disabled = false;
+                document.getElementById('statusValue').textContent = '🟢 检测中';
+                
+                loading.style.display = 'none';
+                
+                // 处理每一帧
+                async function processFrame() {
+                    if (!isRunning) return;
+                    await faceMesh.send({ image: video });
+                    requestAnimationFrame(processFrame);
+                }
+                
+                processFrame();
+                
+                console.log('✅ 检测已启动');
+                
+            } catch (error) {
+                console.error('❌ 启动失败:', error);
+                alert('无法启动检测：' + error.message);
+                loading.style.display = 'none';
+            }
+        }
+        
+        // 停止检测
+        function stopDetection() {
+            if (!isRunning) return;
+            
+            isRunning = false;
+            
+            const video = document.getElementById('videoElement');
+            if (video.srcObject) {
+                const tracks = video.srcObject.getTracks();
+                tracks.forEach(track => track.stop());
+                video.srcObject = null;
+            }
+            
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+            document.getElementById('statusValue').textContent = '⏹️ 已停止';
+            
+            // 清空显示
+            updateDisplay(null, null);
+            document.getElementById('alertPanel').classList.remove('show');
+            document.getElementById('cloudResultPanel').style.display = 'none';
+            
+            console.log('⏹️ 检测已停止');
+        }
+        
+        // MediaPipe 结果处理
+        function onResults(results) {
+            if (!results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
+                return;
+            }
+            
+            const landmarks = results.multiFaceLandmarks[0];
+            
+            // 绘制特征点
+            drawLandmarks(landmarks);
+            
+            // 计算对称性
+            const symmetry = calculateSymmetry(landmarks);
+            
+            // 添加到历史记录
+            frameHistory.push({
+                timestamp: Date.now(),
+                symmetry
+            });
+            
+            // 保持窗口大小
+            if (frameHistory.length > CONFIG.windowSize) {
+                frameHistory.shift();
+            }
+            
+            // 时序分析
+            const temporalAnalysis = temporalAnalyze();
+            
+            // 更新显示
+            updateDisplay(symmetry, temporalAnalysis);
+            
+            // 检查警报
+            if (temporalAnalysis && temporalAnalysis.isAlert) {
+                triggerAlert(symmetry, temporalAnalysis);
+            }
+        }
+        
+        // 计算对称性
+        function calculateSymmetry(landmarks) {
+            const mouthLeft = landmarks[61];
+            const mouthRight = landmarks[291];
+            const mouthAsymmetry = Math.abs(mouthLeft.y - mouthRight.y);
+            
+            const leftEyeTop = landmarks[159];
+            const leftEyeBottom = landmarks[145];
+            const rightEyeTop = landmarks[386];
+            const rightEyeBottom = landmarks[374];
+            
+            const leftEyeHeight = Math.abs(leftEyeTop.y - leftEyeBottom.y);
+            const rightEyeHeight = Math.abs(rightEyeTop.y - rightEyeBottom.y);
+            const eyeAsymmetry = Math.abs(leftEyeHeight - rightEyeHeight);
+            
+            const overall = (mouthAsymmetry * 5 + eyeAsymmetry * 4) / 9;
+            
+            return {
+                mouth: mouthAsymmetry,
+                eyes: eyeAsymmetry,
+                overall
+            };
+        }
+        
+        // 时序分析
+        function temporalAnalyze() {
+            if (frameHistory.length < CONFIG.windowSize / 2) {
+                return null;
+            }
+            
+            const scores = frameHistory.map(f => f.symmetry.overall);
+            const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+            
+            const abnormalFrames = scores.filter(s => s > CONFIG.mouthThreshold).length;
+            const abnormalRatio = abnormalFrames / scores.length;
+            
+            const isAlert = abnormalRatio >= CONFIG.alertThreshold;
+            
+            return {
+                averageScore: avgScore,
+                abnormalRatio,
+                isAlert
+            };
+        }
+        
+        // 绘制特征点
+        function drawLandmarks(landmarks) {
+            const canvas = document.getElementById('canvasElement');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff88';
+            ctx.strokeStyle = '#00ff88';
+            ctx.lineWidth = 2;
+            
+            // 绘制关键点
+            const keyPoints = [61, 291, 33, 133, 362, 263, 1];
+            keyPoints.forEach(idx => {
+                const point = landmarks[idx];
+                const x = point.x * canvas.width;
+                const y = point.y * canvas.height;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            // 绘制连接线（嘴角到鼻子）
+            const noseTip = landmarks[1];
+            const mouthLeft = landmarks[61];
+            const mouthRight = landmarks[291];
+            
+            ctx.beginPath();
+            ctx.moveTo(noseTip.x * canvas.width, noseTip.y * canvas.height);
+            ctx.lineTo(mouthLeft.x * canvas.width, mouthLeft.y * canvas.height);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(noseTip.x * canvas.width, noseTip.y * canvas.height);
+            ctx.lineTo(mouthRight.x * canvas.width, mouthRight.y * canvas.height);
+            ctx.stroke();
+        }
+        
+        // 更新显示
+        function updateDisplay(symmetry, temporalAnalysis) {
+            if (!symmetry) {
+                document.getElementById('symmetryValue').textContent = '--';
+                document.getElementById('mouthValue').textContent = '--';
+                document.getElementById('eyeValue').textContent = '--';
+                document.getElementById('abnormalValue').textContent = '--';
+                document.getElementById('riskValue').textContent = '--';
+                return;
+            }
+            
+            // 对称性
+            const symmetryEl = document.getElementById('symmetryValue');
+            symmetryEl.textContent = (symmetry.overall * 100).toFixed(1) + '%';
+            symmetryEl.className = 'metric-value ' + (symmetry.overall < 0.03 ? 'good' : symmetry.overall < 0.06 ? 'warning' : 'danger');
+            
+            // 嘴角
+            const mouthEl = document.getElementById('mouthValue');
+            mouthEl.textContent = (symmetry.mouth * 1000).toFixed(1);
+            mouthEl.className = 'metric-value ' + (symmetry.mouth < 0.05 ? 'good' : 'danger');
+            
+            // 眼睛
+            const eyeEl = document.getElementById('eyeValue');
+            eyeEl.textContent = (symmetry.eyes * 1000).toFixed(1);
+            eyeEl.className = 'metric-value ' + (symmetry.eyes < 0.03 ? 'good' : 'danger');
+            
+            // 异常比例
+            if (temporalAnalysis) {
+                const abnormalEl = document.getElementById('abnormalValue');
+                abnormalEl.textContent = (temporalAnalysis.abnormalRatio * 100).toFixed(0) + '%';
+                abnormalEl.className = 'metric-value ' + (temporalAnalysis.abnormalRatio < 0.3 ? 'good' : temporalAnalysis.abnormalRatio < 0.7 ? 'warning' : 'danger');
+                
+                // 风险等级
+                const riskEl = document.getElementById('riskValue');
+                let riskText = '✅ 正常';
+                let riskClass = 'good';
+                
+                if (temporalAnalysis.abnormalRatio >= 0.7) {
+                    riskText = '🚨 高风险';
+                    riskClass = 'danger';
+                } else if (temporalAnalysis.abnormalRatio >= 0.3) {
+                    riskText = '⚠️ 中度关注';
+                    riskClass = 'warning';
+                }
+                
+                riskEl.textContent = riskText;
+                riskEl.className = 'metric-value ' + riskClass;
+            }
+        }
+        
+        // 触发警报
+        async function triggerAlert(symmetry, temporalAnalysis) {
+            const now = Date.now();
+            if (now - lastAlertTime < 5000) {
+                return; // 冷却期
+            }
+            
+            lastAlertTime = now;
+            
+            // 显示警报
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.classList.add('show');
+            
+            // 截取当前帧
+            const video = document.getElementById('videoElement');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            const imageBase64 = canvas.toDataURL('image/jpeg', 0.8);
+            
+            // 上传到云端分析
+            document.getElementById('alertContent').textContent = '🔄 正在上传到云端进行深度分析...';
+            
+            try {
+                const response = await fetch(CONFIG.apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        imageBase64,
+                        patientInfo: {
+                            age: 60,
+                            gender: 'male',
+                            hasHistory: false
+                        }
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('云端分析失败');
+                }
+                
+                const result = await response.json();
+                
+                // 显示云端结果
+                showCloudResult(result);
+                
+                // 更新警报内容
+                document.getElementById('alertContent').innerHTML = `
+                    <strong>AI 分析结果：</strong><br>
+                    ${result.findings || '检测到面部不对称'}<br><br>
+                    <strong>建议：</strong>${result.recommendation || '建议咨询专业医生'}
+                `;
+                
+            } catch (error) {
+                console.error('云端分析错误:', error);
+                document.getElementById('alertContent').textContent = '⚠️ 云端分析失败，建议立即就医检查';
+            }
+        }
+        
+        // 显示云端结果
+        function showCloudResult(result) {
+            const panel = document.getElementById('cloudResultPanel');
+            const content = document.getElementById('cloudResultContent');
+            
+            panel.style.display = 'block';
+            
+            const riskColors = {
+                low: '#00ff88',
+                medium: '#ffc107',
+                high: '#ff4757'
+            };
+            
+            const riskIcons = {
+                low: '✅',
+                medium: '⚠️',
+                high: '🚨'
+            };
+            
+            content.innerHTML = `
+                <div class="metric">
+                    <span class="metric-label">风险等级</span>
+                    <span class="metric-value" style="color: ${riskColors[result.risk_level]}">
+                        ${riskIcons[result.risk_level]} ${result.risk_level === 'low' ? '低风险' : result.risk_level === 'medium' ? '中度关注' : '高风险'}
+                    </span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">置信度</span>
+                    <span class="metric-value">${result.confidence}%</span>
+                </div>
+                <div style="margin-top: 15px; color: #e0e0e0; line-height: 1.6;">
+                    <strong>AI 发现：</strong><br>
+                    ${result.findings || '无明显异常'}
+                </div>
+                <div style="margin-top: 10px; color: #00d4ff;">
+                    <strong>建议：</strong>${result.recommendation || '继续监测'}
+                </div>
+            `;
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
