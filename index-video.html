@@ -623,20 +623,25 @@
                 return;
             }
             
+            console.log('📊 更新显示:', symmetry);
+            
             // 对称性
             const symmetryEl = document.getElementById('symmetryValue');
-            symmetryEl.textContent = (symmetry.overall * 100).toFixed(1) + '%';
-            symmetryEl.className = 'metric-value ' + (symmetry.overall < 0.03 ? 'good' : symmetry.overall < 0.06 ? 'warning' : 'danger');
+            const symmetryPercent = (symmetry.overall * 1000).toFixed(1);
+            symmetryEl.textContent = symmetryPercent + '%';
+            symmetryEl.className = 'metric-value ' + (symmetry.overall < 0.035 ? 'good' : symmetry.overall < 0.06 ? 'warning' : 'danger');
             
             // 嘴角
             const mouthEl = document.getElementById('mouthValue');
-            mouthEl.textContent = (symmetry.mouth * 1000).toFixed(1);
-            mouthEl.className = 'metric-value ' + (symmetry.mouth < 0.05 ? 'good' : 'danger');
+            const mouthValue = (symmetry.mouth * 1000).toFixed(1);
+            mouthEl.textContent = mouthValue;
+            mouthEl.className = 'metric-value ' + (symmetry.mouth < 0.035 ? 'good' : 'danger');
             
             // 眼睛
             const eyeEl = document.getElementById('eyeValue');
-            eyeEl.textContent = (symmetry.eyes * 1000).toFixed(1);
-            eyeEl.className = 'metric-value ' + (symmetry.eyes < 0.03 ? 'good' : 'danger');
+            const eyeValue = (symmetry.eyes * 1000).toFixed(1);
+            eyeEl.textContent = eyeValue;
+            eyeEl.className = 'metric-value ' + (symmetry.eyes < 0.02 ? 'good' : 'danger');
             
             // 异常比例
             if (temporalAnalysis) {
