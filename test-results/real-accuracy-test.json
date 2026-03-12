@@ -1,0 +1,393 @@
+{
+  "timestamp": "2026-03-12T07:21:26.717Z",
+  "apiUrl": "https://mirrorguard-demo.vercel.app/api/analyze",
+  "config": {
+    "numSamples": 50,
+    "apiUrl": "https://mirrorguard-demo.vercel.app/api/analyze",
+    "apiKey": ""
+  },
+  "metrics": {
+    "totalSamples": 50,
+    "confusionMatrix": {
+      "TP": 19,
+      "TN": 23,
+      "FP": 2,
+      "FN": 6
+    },
+    "accuracy": "84.00",
+    "precision": "90.48",
+    "recall": "76.00",
+    "specificity": "92.00",
+    "f1Score": "82.60"
+  },
+  "bySeverity": {
+    "normal": {
+      "total": 25,
+      "correct": 23
+    },
+    "mild": {
+      "total": 10,
+      "correct": 5
+    },
+    "moderate": {
+      "total": 10,
+      "correct": 7
+    },
+    "severe": {
+      "total": 5,
+      "correct": 5
+    }
+  },
+  "detailedResults": [
+    {
+      "id": "normal_1",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_2",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_3",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_4",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_5",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_6",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_7",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_8",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_9",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_10",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_11",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_12",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_13",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_14",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_15",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_16",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_17",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_18",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_19",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_20",
+      "trueLabel": "low",
+      "predictedLabel": "medium",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_21",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_22",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_23",
+      "trueLabel": "low",
+      "predictedLabel": "medium",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_24",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "normal_25",
+      "trueLabel": "low",
+      "predictedLabel": "low",
+      "trueSeverity": "normal",
+      "success": true
+    },
+    {
+      "id": "mild_1",
+      "trueLabel": "medium",
+      "predictedLabel": "low",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_2",
+      "trueLabel": "medium",
+      "predictedLabel": "low",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_3",
+      "trueLabel": "medium",
+      "predictedLabel": "high",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_4",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_5",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_6",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_7",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_8",
+      "trueLabel": "medium",
+      "predictedLabel": "low",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_9",
+      "trueLabel": "medium",
+      "predictedLabel": "low",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "mild_10",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "mild",
+      "success": true
+    },
+    {
+      "id": "moderate_1",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_2",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_3",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_4",
+      "trueLabel": "medium",
+      "predictedLabel": "low",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_5",
+      "trueLabel": "medium",
+      "predictedLabel": "low",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_6",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_7",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_8",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_9",
+      "trueLabel": "medium",
+      "predictedLabel": "medium",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "moderate_10",
+      "trueLabel": "medium",
+      "predictedLabel": "high",
+      "trueSeverity": "moderate",
+      "success": true
+    },
+    {
+      "id": "severe_1",
+      "trueLabel": "high",
+      "predictedLabel": "high",
+      "trueSeverity": "severe",
+      "success": true
+    },
+    {
+      "id": "severe_2",
+      "trueLabel": "high",
+      "predictedLabel": "high",
+      "trueSeverity": "severe",
+      "success": true
+    },
+    {
+      "id": "severe_3",
+      "trueLabel": "high",
+      "predictedLabel": "high",
+      "trueSeverity": "severe",
+      "success": true
+    },
+    {
+      "id": "severe_4",
+      "trueLabel": "high",
+      "predictedLabel": "high",
+      "trueSeverity": "severe",
+      "success": true
+    },
+    {
+      "id": "severe_5",
+      "trueLabel": "high",
+      "predictedLabel": "high",
+      "trueSeverity": "severe",
+      "success": true
+    }
+  ]
+}
