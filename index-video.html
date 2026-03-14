@@ -394,7 +394,19 @@
             video.onloadedmetadata = () => {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
+                console.log('📐 Canvas 尺寸设置为:', canvas.width, 'x', canvas.height);
             };
+            
+            // 预检查 MediaPipe
+            window.addEventListener('load', () => {
+                console.log('📦 页面加载完成');
+                console.log('FaceMesh 类型:', typeof FaceMesh);
+                if (typeof FaceMesh !== 'undefined') {
+                    console.log('✅ MediaPipe 已就绪');
+                } else {
+                    console.log('⏳ MediaPipe 加载中...');
+                }
+            });
         }
         
         // 等待 MediaPipe 加载完成
@@ -553,10 +565,23 @@
         
         // MediaPipe 结果处理
         function onResults(results) {
+            console.log('📊 MediaPipe 结果:', {
+                hasLandmarks: !!results.multiFaceLandmarks,
+                faceCount: results.multiFaceLandmarks ? results.multiFaceLandmarks.length : 0
+            });
+            
             if (!results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
+                console.log('⚠️ 未检测到人脸');
+                // 更新状态提示
+                const riskEl = document.getElementById('riskValue');
+                if (riskEl) {
+                    riskEl.textContent = '🔍 未检测到人脸';
+                    riskEl.className = 'metric-value warning';
+                }
                 return;
             }
             
+            console.log('✅ 检测到人脸！');
             const landmarks = results.multiFaceLandmarks[0];
             
             // 绘制特征点
@@ -564,6 +589,7 @@
             
             // 计算对称性
             const symmetry = calculateSymmetry(landmarks);
+            console.log('📊 对称性数据:', symmetry);
             
             // 添加到历史记录
             frameHistory.push({
@@ -604,6 +630,12 @@
             const eyeAsymmetry = Math.abs(leftEyeHeight - rightEyeHeight);
             
             const overall = (mouthAsymmetry * 5 + eyeAsymmetry * 4) / 9;
+            
+            console.log('📏 对称性计算:', {
+                mouth: mouthAsymmetry.toFixed(4),
+                eyes: eyeAsymmetry.toFixed(4),
+                overall: overall.toFixed(4)
+            });
             
             return {
                 mouth: mouthAsymmetry,
