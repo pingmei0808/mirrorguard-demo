@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>镜守 MirrorGuard - 视频实时检测</title>
-    <!-- MediaPipe Face Mesh - 使用多个 CDN 源确保可靠性 -->
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <!-- MediaPipe Face Mesh - 使用 unpkg CDN（更完整） -->
+    <script crossorigin="anonymous" src="https://unpkg.com/@mediapipe/face_mesh@0.4.1633549677/face_mesh.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/@mediapipe/camera_utils@0.3.1633549677/camera_utils.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/@mediapipe/drawing_utils@0.3.1633549677/drawing_utils.js"></script>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -488,7 +488,9 @@
                 // 初始化 MediaPipe
                 const faceMesh = new FaceMesh({
                     locateFile: (file) => {
-                        return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633549677/${file}`;
+                        // 使用 unpkg CDN 加载 MediaPipe 资源文件
+                        console.log('📦 加载 MediaPipe 资源:', file);
+                        return `https://unpkg.com/@mediapipe/face_mesh@0.4.1633549677/${file}`;
                     }
                 });
                 
